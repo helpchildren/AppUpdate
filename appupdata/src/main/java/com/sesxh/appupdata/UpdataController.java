@@ -1,7 +1,6 @@
 package com.sesxh.appupdata;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 import com.sesxh.appupdata.bean.UpdateInfo;
