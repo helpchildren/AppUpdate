@@ -9,6 +9,13 @@ public class UpdateInfo {
     private String isForce;//是否强制升级 0否 1是
     private double size;
 
+    public UpdateInfo(String versionName, String description, String apkurl, String isForce) {
+        this.versionName = versionName;
+        this.description = description;
+        this.apkurl = apkurl;
+        this.isForce = isForce;
+    }
+
     public String getVersionCode() {
         return versionCode;
     }

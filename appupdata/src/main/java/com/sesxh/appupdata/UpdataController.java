@@ -2,9 +2,10 @@ package com.sesxh.appupdata;
 
 import android.content.Context;
 
-import com.alibaba.fastjson.JSON;
 import com.sesxh.appupdata.bean.UpdateInfo;
 import com.sesxh.appupdata.callback.UpdataCallback;
+
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -55,7 +56,12 @@ public class UpdataController {
      * 获取app版本
      */
     public static void getApkVersion(Context context, String updataString, UpdataCallback updataCallback) throws Exception{
-        UpdateInfo updateInfo = JSON.parseObject(updataString, UpdateInfo.class);
+        JSONObject jsonObject = new JSONObject(updataString);
+        String versionName = jsonObject.optString("versionName","1.0.0");
+        String description = jsonObject.optString("description","");
+        String apkurl = jsonObject.optString("apkurl","");
+        String isForce = jsonObject.optString("isForce","1");
+        UpdateInfo updateInfo = new UpdateInfo(versionName, description, apkurl, isForce);
         UpdateInfoService.getInstance().getUpDateInfo(context, updateInfo, updataCallback);
     }
 
